@@ -25,6 +25,24 @@ app.get("/api/hello", function (req, res) {
 });
 
 
+// return unix time stamp
+app.get("/api/:date", function(req, res){
+  let timestamp = req.params.date
+  let intValue
+  if(timestamp !== null && timestamp.length > 0) {
+    intValue = parseInt(str);
+  }
+  if (intValue === 0){
+    res.json({ error : "Invalid Date" })
+  }
+
+  if (timestamp.length > 0){
+    intValue = new Date.now()
+  } 
+  let utcTime = new date(intValue * 1000)
+
+  res.json({unix: intValue, utc: utcTime})
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
